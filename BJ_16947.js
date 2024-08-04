@@ -3,29 +3,34 @@ let input = require('fs').readFileSync('input_16947.txt').toString().trim().spli
 
 const N = +input[0]
 
-let staion = Array(N+1).fill().map(el =>[] )
+let station = Array(N+1).fill().map(el =>[] )
 let visit = Array(N+1).fill(false)
 
-for(let i=1; i<=N; i++){
+for(let i=1; i<=N; i++){//인접 리스트 생성
     let [from, to] = [input[i][0], input[i][1]]
-    staion[from].push(to)
-    staion[to].push(from)
+    station[from].push(to)
+    station[to].push(from)
     
 }
+console.log(station)
+let answer = []
 
-const bfs = (start, target)=>{
-    let stack = [[start, 0]]
+const bfs = (start)=>{
+    let q = []
+    q.push([start, 0])
     visit[start] = true
 
-    while(stack.length){
-        const [cur, depth] =stack.pop()
-        if(cur == target) return depth
-        for(let node of staion[cur]){
+    while(!q.length){
+        const [cur, depth] =q.shift()
+        
+        for(let node of station[cur]){
             if(!visit[node]){
                 visit[node] = true
-                stack.push([node, depth+1])
+                q.push([node, depth+1])
             }
         }
     }
 }
+
+console.log(bfs(1))
 
