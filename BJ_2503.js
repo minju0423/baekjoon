@@ -1,5 +1,5 @@
-// const input = require('fs').readFileSync('input_2503d.txt').toString().split('\n')
-const input = require('fs').readFileSync('/dev/stdin').toString().split('\n')
+const input = require('fs').readFileSync('input_2503.txt').toString().split('\n')
+// const input = require('fs').readFileSync('/dev/stdin').toString().split('\n')
 const N = input[0]
 
 let num = []
